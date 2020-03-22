@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="596.0" prefWidth="602.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="application.MainController">
+   <children>
+      <SplitPane dividerPositions="0.5403508771929825" layoutX="24.0" layoutY="28.0" orientation="VERTICAL" prefHeight="287.0" prefWidth="555.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="149.0" prefWidth="543.0">
+               <children>
+                  <TextField floatText="First Name" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="450.0" />
+                  <TextField floatText="Last Name" layoutX="14.0" layoutY="65.0" prefHeight="25.0" prefWidth="450.0" />
+                  <TextField floatText="Number of Credits" layoutX="14.0" layoutY="109.0" prefHeight="25.0" prefWidth="450.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="101.0" prefWidth="553.0">
+               <children>
+                  <Button fx:id="clickme" layoutX="479.0" layoutY="15.0" mnemonicParsing="false" onAction="#generateTxt" prefHeight="25.0" prefWidth="60.0" text="Add" />
+                  <Button fx:id="clickme1" layoutX="479.0" layoutY="53.0" mnemonicParsing="false" onAction="#generateTxt" prefHeight="25.0" prefWidth="60.0" text="Remove" />
+                  <Button fx:id="clickme2" layoutX="479.0" layoutY="88.0" mnemonicParsing="false" onAction="#generateTxt" prefHeight="25.0" prefWidth="60.0" text="Print" />
+                  <RadioButton layoutX="24.0" layoutY="28.0" mnemonicParsing="false" text="INSTATE" />
+                  <RadioButton layoutX="24.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="OUTSTATE" />
+                  <RadioButton layoutX="24.0" layoutY="88.0" mnemonicParsing="false" text="INTERNATIONAL" />
+                  <CheckBox layoutX="176.0" layoutY="28.0" mnemonicParsing="false" text="Funding" />
+                  <CheckBox layoutX="176.0" layoutY="57.0" mnemonicParsing="false" text="Tri-State-Student" />
+                  <CheckBox layoutX="176.0" layoutY="88.0" mnemonicParsing="false" text="Exchange Student" />
+                  <TextField layoutX="318.0" layoutY="24.0" prefHeight="25.0" prefWidth="98.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Label fx:id="myMessage" layoutX="25.0" layoutY="338.0" prefHeight="218.0" prefWidth="553.0" />
+   </children>
+</AnchorPane>
