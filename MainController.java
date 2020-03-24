@@ -1,18 +1,17 @@
 package application;
 
-import javafx.event.ActionEvent;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import java.util.Random;
-import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.event.ActionEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 
 public class MainController {
-	@FXML
-	private Label myMessage;
-	public void generateTxt(ActionEvent event) {
-		Random rand = new Random();
-		int myID = rand.nextInt(20)+1;
-		myMessage.setText("Student ID: "+Integer.toString(myID)+" is here!");
-		//System.out.println("Student ID: "+Integer.toString(myID)+" is here!");
-		
-	}
+
 }
