@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -59,14 +60,17 @@
                <children>
                   <VBox prefHeight="100.0" prefWidth="156.0" spacing="10.0">
                      <children>
-                        <RadioButton fx:id="instate" mnemonicParsing="false" text="INSTATE" />
-                        <RadioButton fx:id="outstate" mnemonicParsing="false" text="OUTSTATE" />
-                        <RadioButton fx:id="international" mnemonicParsing="false" text="INTERNATIONAL" />
+                        <RadioButton fx:id="instate" mnemonicParsing="false" onMouseClicked="#filter" text="INSTATE">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="toggleGroup" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton fx:id="outstate" mnemonicParsing="false" onMouseClicked="#filter" text="OUTSTATE" toggleGroup="$toggleGroup" />
+                        <RadioButton fx:id="international" mnemonicParsing="false" onMouseClicked="#filter" text="INTERNATIONAL" toggleGroup="$toggleGroup" />
                      </children>
                   </VBox>
                   <VBox prefHeight="100.0" prefWidth="144.0" spacing="10.0">
                      <children>
-                        <CheckBox fx:id="funding" mnemonicParsing="false" text="Funding" />
+                        <CheckBox fx:id="funding" mnemonicParsing="false" onAction="#checkEvent" text="Funding" />
                         <CheckBox fx:id="tristate" mnemonicParsing="false" text="Tri-State Student" />
                         <CheckBox fx:id="exchange" mnemonicParsing="false" text="Exchange Student" />
                      </children>
@@ -78,9 +82,9 @@
                   </VBox>
                   <VBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="107.0" spacing="10.0">
                      <children>
-                        <Button fx:id="add" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Add" />
-                        <Button fx:id="remove" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Remove" />
-                        <Button fx:id="print" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Print" />
+                        <Button fx:id="add" mnemonicParsing="false" onAction="#run" prefHeight="25.0" prefWidth="60.0" text="Add" />
+                        <Button fx:id="remove" mnemonicParsing="false" onAction="#run" prefHeight="25.0" prefWidth="60.0" text="Remove" />
+                        <Button fx:id="print" mnemonicParsing="false" onAction="#run" prefHeight="25.0" prefWidth="60.0" text="Print" />
                      </children>
                   </VBox>
                </children>
