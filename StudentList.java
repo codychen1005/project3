@@ -113,4 +113,15 @@ public class StudentList {
             System.out.println(studentList[i].toString() + " tuition due: $" + studentList[i].tuitionDue());
         }
     }
+    
+    public String GUItoString() {
+    	String statement = ""; 
+    	if (numStudents == 0) {
+             System.err.println("There are zero students.");
+         }
+         for (int i = 0; i < numStudents; i++) {
+        	 statement += studentList[i].toString() + " tuition due: $" + studentList[i].tuitionDue() + "\n";
+         }        
+         return statement;
+    }
 }
