@@ -42,7 +42,7 @@ public class MainController {
 				
 			}
 
-			if(outstate.isSelected()) {
+			else if(outstate.isSelected()) {
 				initialize();
 				selectedOutstate = true;
 				funding.setDisable(true);
@@ -50,7 +50,7 @@ public class MainController {
 				exchange.setDisable(true);
 				
 			}
-			if(international.isSelected()) {
+			else if(international.isSelected()) {
 				initialize();
 				selectedInternational = true;
 				funding.setDisable(true);
@@ -100,41 +100,134 @@ public class MainController {
     }
     
     /**
+     * Check if a given string is alphanumeric
+     */
+    public boolean isAlphanumeric(String name) {
+    	char[] chars = name.toCharArray();
+    	for(char c : chars) {
+    		if(!Character.isLetter(c)) {
+    			return false;
+    		}
+    	}
+    	return true;
+    }
+    
+    /**
+     * Check if first and last name are valid
+     * Display text if they are not 
+     */
+    public boolean validName() {
+    	//Check if first and last name are NOT NULL
+    	if(fname.getText() == null || fname.getText().isEmpty()) {
+    		result.setText("Please enter a first name.");
+    		return false;
+    	}
+    	if(lname.getText() == null || lname.getText().isEmpty()) {
+    		result.setText("Please enter a last name.");
+    		return false;
+    	}
+
+    	//Check if first and last name are VALID
+    	if(!isAlphanumeric(fname.getText())) {
+    		result.setText("Invalid first name for student.");
+    		return false;
+    	}
+    	if(!isAlphanumeric(lname.getText())) {
+    		result.setText("Invalid last name for student.");
+    		return false;
+    	}
+    	return true;
+    }
+    
+    /**
+     * Check if credit amount is valid
+     * Display text if it is not
+     */
+    public boolean validCredit() {
+    	int enteredCredit = 0;
+    	try {
+			enteredCredit = Integer.parseInt(credit.getText());
+		} catch (NumberFormatException e) {
+			result.setText("Integer expected for number of credits.");
+			return false;
+		}
+		if (enteredCredit <= 0) {
+			result.setText("Positive credit amount expected.");
+			return false;
+		}
+    	return true;
+    }
+    
+    /**
+     * Check if funding amount is valid
+     * Display text if it is not
+     */
+    public boolean validFunding() {
+    	int fundingAmount = 0;
+    	try {
+			fundingAmount = Integer.parseInt(funds.getText());
+		} catch (NumberFormatException e) {
+			result.setText("Integer expected for funding amount.");
+			return false;
+		}
+		if (fundingAmount <= 0) {
+			result.setText("Positive funding amount expected.");
+			return false;
+		}
+    	return true;
+    }
+    
+    /**
 	 * add different types of student to the StudentList.
 	 */
 	public void addStudent(ActionEvent event) {
+		if(!validName()) {
+			return;
+		}
+		if(!validCredit()) {
+			return;
+		}
 		
-		if(selectedInstate == true) {		
+		//Case 1: QUESTION what is the purpose of the checkbox for "Funding"?
+		//I think if checkbox is not selected we don't look at the funding amount???
+		if(selectedInstate == true || instate.isSelected()) {
+			//funding.isSelected();
+			if(!validFunding()) {
+				return;
+			}
 			Instate inStudent = new Instate(fname.getText(), lname.getText(), Integer.parseInt(credit.getText()), Integer.parseInt(funds.getText()));
 			if(classOf2020.contains(inStudent)) {
-	        	result.setText("Duplicate student");	          
+	        	result.setText("Student is already in the list.");	          
 	        }
 			else {
 				classOf2020.add(inStudent);
-				result.setText("successfully added student");
+				result.setText("Student added to the list.");
 			}
 		}
 		
 		if(selectedOutstate == true) {
 			Outstate outStudent = new Outstate(fname.getText(), lname.getText(), Integer.parseInt(credit.getText()), selectedTristate);
 			if(classOf2020.contains(outStudent)) {
-	        	result.setText("Duplicate student");
+	        	result.setText("Student is already in the list.");
 	        }
 			else {
 				classOf2020.add(outStudent);
-				result.setText("successfully added student");
+				result.setText("Student added to the list.");
 			}
 		}
 		
 		if(selectedInternational == true) {
 			International intStudent = new International(fname.getText(), lname.getText(), Integer.parseInt(credit.getText()), selectedExchange);
 			if(classOf2020.contains(intStudent)) {
-	        	result.setText("Duplicate student");	          
+	        	result.setText("Student is already in the list.");	          
 	        }
 			else {
 				classOf2020.add(intStudent);
-				result.setText("successfully added student");
+				result.setText("Student added to the list.");
 			}
+		}else {
+			result.setText("No student type selected.");
+			return;
 		}
 		
 		initialize();

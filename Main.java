@@ -28,6 +28,9 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		launch(args);
+//        TuitionManager rut = new TuitionManager();
+//        rut.run();
+        launch(args);
+		
 	}
 }
