@@ -71,6 +71,7 @@ public class MainController {
 		}
 		if(funding.isSelected() == false) {
 			funds.setDisable(true);
+			funds.setText("0");
 		}
 		if(tristate.isSelected()) {
 			selectedTristate = true;
