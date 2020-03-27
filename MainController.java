@@ -112,11 +112,12 @@ public class MainController {
                 funding.setDisable(true);
                 funding.setSelected(false);
                 funds.setDisable(true);
-                funds.setText("");
+                funds.setText("0");
             }
             else {
                 funding.setDisable(false);
                 funds.setDisable(false);
+                funds.setText("");
             }
         }else if(selectedInternational) {
             if(Integer.parseInt(credit.getText()) < INTERNATIONAL_MIN_CREDITS) {
